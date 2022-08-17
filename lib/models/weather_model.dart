@@ -9,7 +9,7 @@ class WeatherForecastModel {
       {required this.city, required this.cod, required this.message, required this.cnt, required this.list});
 
   WeatherForecastModel.fromJson(Map<String, dynamic> json) {
-    city = json['city'] != null ? City.fromJson(json['city']) : null;
+    city = (json['city'] != null ? City.fromJson(json['city']) : null)!;
     cod = json['cod'];
     message = json['message'];
     cnt = json['cnt'];
@@ -23,39 +23,35 @@ class WeatherForecastModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =  <String, dynamic>{};
-    if (city != null) {
-      data['city'] = city.toJson();
-    }
+    data['city'] = city.toJson();
     data['cod'] = cod;
     data['message'] = message;
     data['cnt'] = cnt;
-    if (list != null) {
-      data['list'] = list.map((v) => v.toJson()).toList();
-    }
+    data['list'] = list.map((v) => v.toJson()).toList();
     return data;
   }
 }
 
 class City {
-  int id;
-  String name;
-  Coord coord;
-  String country;
-  int population;
-  int timezone;
+ late int id;
+  late String name;
+  late Coord coord;
+  late String country;
+  late int population;
+  late int timezone;
 
   City(
-      {this.id,
-      this.name,
-      this.coord,
-      this.country,
-      this.population,
-      this.timezone});
+      {required this.id,
+      required this.name,
+      required this.coord,
+      required this.country,
+      required this.population,
+      required this.timezone});
 
   City.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
+    coord = (json['coord'] != null ? Coord.fromJson(json['coord']) : null)!;
     country = json['country'];
     population = json['population'];
     timezone = json['timezone'];
@@ -65,9 +61,7 @@ class City {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    if (coord != null) {
-      data['coord'] = coord.toJson();
-    }
+    data['coord'] = coord.toJson();
     data['country'] = country;
     data['population'] = population;
     data['timezone'] = timezone;
@@ -76,10 +70,10 @@ class City {
 }
 
 class Coord {
-  double lon;
-  double lat;
+  late double lon;
+  late double lat;
 
-  Coord({this.lon, this.lat});
+  Coord({required this.lon,required this.lat});
 
   Coord.fromJson(Map<String, dynamic> json) {
     lon = json['lon'];
@@ -95,45 +89,45 @@ class Coord {
 }
 
 class Lista {
-  int dt;
-  int sunrise;
-  int sunset;
-  Temp temp;
-  FeelsLike feelsLike;
-  int pressure;
-  int humidity;
-  List<Weather> weather;
-  double speed;
-  int deg;
-  double gust;
-  int clouds;
-  double pop;
-  double rain;
+ late int dt;
+ late int sunrise;
+ late int sunset;
+ late Temp temp;
+ late FeelsLike feelsLike;
+ late int pressure;
+ late int humidity;
+ late List<Weather> weather;
+ late double speed;
+ late int deg;
+ late double gust;
+ late int clouds;
+ late double pop;
+ late double rain;
 
   Lista(
-      {this.dt,
-      this.sunrise,
-      this.sunset,
-      this.temp,
-      this.feelsLike,
-      this.pressure,
-      this.humidity,
-      this.weather,
-      this.speed,
-      this.deg,
-      this.gust,
-      this.clouds,
-      this.pop,
-      this.rain});
+      {required this.dt,
+      required this.sunrise,
+      required this.sunset,
+      required this.temp,
+      required this.feelsLike,
+      required this.pressure,
+      required this.humidity,
+      required this.weather,
+      required this.speed,
+      required this.deg,
+      required this.gust,
+      required this.clouds,
+      required this.pop,
+      required this.rain});
 
   Lista.fromJson(Map<String, dynamic> json) {
     dt = json['dt'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
-    temp = json['temp'] != null ?  Temp.fromJson(json['temp']) : null;
-    feelsLike = json['feels_like'] != null
+    temp = (json['temp'] != null ?  Temp.fromJson(json['temp']) : null)!;
+    feelsLike = (json['feels_like'] != null
         ?  FeelsLike.fromJson(json['feels_like'])
-        : null;
+        : null)!;
     pressure = json['pressure'];
     humidity = json['humidity'];
     if (json['weather'] != null) {
@@ -155,17 +149,11 @@ class Lista {
     data['dt'] = dt;
     data['sunrise'] = sunrise;
     data['sunset'] = sunset;
-    if (temp != null) {
-      data['temp'] = temp.toJson();
-    }
-    if (feelsLike != null) {
-      data['feels_like'] = feelsLike.toJson();
-    }
+    data['temp'] = temp.toJson();
+    data['feels_like'] = feelsLike.toJson();
     data['pressure'] = pressure;
     data['humidity'] = humidity;
-    if (weather != null) {
-      data['weather'] = weather.map((v) => v.toJson()).toList();
-    }
+    data['weather'] = weather.map((v) => v.toJson()).toList();
     data['speed'] = speed;
     data['deg'] = deg;
     data['gust'] = gust;
@@ -177,14 +165,14 @@ class Lista {
 }
 
 class Temp {
-  double day;
-  double min;
-  double max;
-  double night;
-  double eve;
-  double morn;
+  late double day;
+  late double min;
+  late double max;
+  late double night;
+  late double eve;
+  late double morn;
 
-  Temp({this.day, this.min, this.max, this.night, this.eve, this.morn});
+  Temp({required this.day,required this.min,required this.max,required this.night,required this.eve,required this.morn});
 
   Temp.fromJson(Map<String, dynamic> json) {
     day = json['day'];
@@ -208,12 +196,12 @@ class Temp {
 }
 
 class FeelsLike {
-  double day;
-  double night;
-  double eve;
-  double morn;
+  late double day;
+  late double night;
+  late double eve;
+  late double morn;
 
-  FeelsLike({this.day, this.night, this.eve, this.morn});
+  FeelsLike({required this.day,required this.night,required this.eve,required this.morn});
 
   FeelsLike.fromJson(Map<String, dynamic> json) {
     day = json['day'];
@@ -233,12 +221,12 @@ class FeelsLike {
 }
 
 class Weather {
-  int id;
-  String main;
-  String description;
-  String icon;
+  late int id;
+  late String main;
+  late String description;
+  late String icon;
 
-  Weather({this.id, this.main, this.description, this.icon});
+  Weather({required this.id,required this.main,required this.description,required this.icon});
 
   Weather.fromJson(Map<String, dynamic> json) {
     id = json['id'];
