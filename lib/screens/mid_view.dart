@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weather_forcast/utill/forcast_utill.dart';
 
 import '../utill/constants.dart';
+import '../utill/convertIcon.dart';
 
 Widget midview(AsyncSnapshot snapshot){
   var forecastList = snapshot.data.list; 
@@ -21,7 +22,11 @@ Widget midview(AsyncSnapshot snapshot){
           style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
           Text(formatedDate, style:const TextStyle(fontSize: 15) ),
           const SizedBox(height: 15,),
-            Icon(FontAwesomeIcons.cloud, color: Colors.pink[300]  , size: 190,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: getWeatherIcon(weatherDescription: forecastList[0].weather[0].main, color:Colors.pink[300]  , size: 195   ),
+          ),
+            // Icon(FontAwesomeIcons.cloud, color: Colors.pink[300]  , size: 190,),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
