@@ -6,7 +6,11 @@ class WeatherForecastModel {
   late List<Lista> list;
 
   WeatherForecastModel(
-      {required this.city, required this.cod, required this.message, required this.cnt, required this.list});
+      {required this.city,
+      required this.cod,
+      required this.message,
+      required this.cnt,
+      required this.list});
 
   WeatherForecastModel.fromJson(Map<String, dynamic> json) {
     city = (json['city'] != null ? City.fromJson(json['city']) : null)!;
@@ -14,7 +18,7 @@ class WeatherForecastModel {
     message = json['message'];
     cnt = json['cnt'];
     if (json['list'] != null) {
-      list =  <Lista>[];
+      list = <Lista>[];
       json['list'].forEach((v) {
         list.add(Lista.fromJson(v));
       });
@@ -22,7 +26,7 @@ class WeatherForecastModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['city'] = city.toJson();
     data['cod'] = cod;
     data['message'] = message;
@@ -33,7 +37,7 @@ class WeatherForecastModel {
 }
 
 class City {
- late int id;
+  late int id;
   late String name;
   late Coord coord;
   late String country;
@@ -73,7 +77,7 @@ class Coord {
   late double lon;
   late double lat;
 
-  Coord({required this.lon,required this.lat});
+  Coord({required this.lon, required this.lat});
 
   Coord.fromJson(Map<String, dynamic> json) {
     lon = json['lon'];
@@ -89,20 +93,20 @@ class Coord {
 }
 
 class Lista {
- late int dt;
- late int sunrise;
- late int sunset;
- late Temp temp;
- late FeelsLike feelsLike;
- late int pressure;
- late int humidity;
- late List<Weather> weather;
- late double speed;
- late int deg;
- late double gust;
- late int clouds;
- late double pop;
- late double rain;
+  late int dt;
+  late int sunrise;
+  late int sunset;
+  late Temp temp;
+  late FeelsLike feelsLike;
+  late int pressure;
+  late int humidity;
+  late List<Weather> weather;
+  late double speed;
+  late int deg;
+  late double gust;
+  late int clouds;
+  late double pop;
+  late double rain;
 
   Lista(
       {required this.dt,
@@ -124,28 +128,33 @@ class Lista {
     dt = json['dt'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
-    temp = (json['temp'] != null ?  Temp.fromJson(json['temp']) : null)!;
+    temp = (json['temp'] != null ? Temp.fromJson(json['temp']) : null)!;
     feelsLike = (json['feels_like'] != null
-        ?  FeelsLike.fromJson(json['feels_like'])
+        ? FeelsLike.fromJson(json['feels_like'])
         : null)!;
     pressure = json['pressure'];
     humidity = json['humidity'];
     if (json['weather'] != null) {
       weather = <Weather>[];
       json['weather'].forEach((v) {
-        weather.add( Weather.fromJson(v));
+        weather.add(Weather.fromJson(v));
       });
     }
     speed = json['speed'];
     deg = json['deg'];
-    gust = json['gust'];
+    gust = json['gust'].toDouble();
     clouds = json['clouds'];
-    pop = json['pop'];
-    rain = json['rain'];
+    pop = json['pop'].toDouble();
+    // double myDouble = myInt.toDouble();
+    if (json['rain'] == null) {
+      rain = 0.0;
+    } else {
+      rain = json['rain'].toDouble();
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['dt'] = dt;
     data['sunrise'] = sunrise;
     data['sunset'] = sunset;
@@ -172,15 +181,21 @@ class Temp {
   late double eve;
   late double morn;
 
-  Temp({required this.day,required this.min,required this.max,required this.night,required this.eve,required this.morn});
+  Temp(
+      {required this.day,
+      required this.min,
+      required this.max,
+      required this.night,
+      required this.eve,
+      required this.morn});
 
   Temp.fromJson(Map<String, dynamic> json) {
-    day = json['day'];
-    min = json['min'];
-    max = json['max'];
-    night = json['night'];
-    eve = json['eve'];
-    morn = json['morn'];
+    day = json['day'].toDouble();
+    min = json['min'].toDouble();
+    max = json['max'].toDouble();
+    night = json['night'].toDouble();
+    eve = json['eve'].toDouble();
+    morn = json['morn'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
@@ -201,10 +216,14 @@ class FeelsLike {
   late double eve;
   late double morn;
 
-  FeelsLike({required this.day,required this.night,required this.eve,required this.morn});
+  FeelsLike(
+      {required this.day,
+      required this.night,
+      required this.eve,
+      required this.morn});
 
   FeelsLike.fromJson(Map<String, dynamic> json) {
-    day = json['day'];
+    day = json['day'].toDouble();
     night = json['night'];
     eve = json['eve'];
     morn = json['morn'];
@@ -226,7 +245,11 @@ class Weather {
   late String description;
   late String icon;
 
-  Weather({required this.id,required this.main,required this.description,required this.icon});
+  Weather(
+      {required this.id,
+      required this.main,
+      required this.description,
+      required this.icon});
 
   Weather.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -236,7 +259,7 @@ class Weather {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['main'] = main;
     data['description'] = description;
