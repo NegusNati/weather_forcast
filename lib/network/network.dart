@@ -16,7 +16,8 @@ class Network{
 
      if(response.statusCode == 200){
       print(json.decode(response.body));
-      return WeatherForecastModel.fromJson(json.decode(response.body));
+      //return the mapped json to our PODO model  
+      return WeatherForecastModel.fromJson(json.decode(response.body)); 
      }else{
       throw Exception("Error reaching the wearther API");
      }
