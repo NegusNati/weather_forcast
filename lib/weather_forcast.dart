@@ -80,4 +80,6 @@ class _WeatheForcastState extends State<WeatheForcast> {
 
   Future<WeatherForecastModel> networkForecastMethod({required String cityName}) =>
       Network().getWeatherForcast(cityName: _city);
+      
+        
 }
