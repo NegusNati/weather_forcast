@@ -224,9 +224,9 @@ class FeelsLike {
 
   FeelsLike.fromJson(Map<String, dynamic> json) {
     day = json['day'].toDouble();
-    night = json['night'];
-    eve = json['eve'];
-    morn = json['morn'];
+    night = json['night'].toDouble();
+    eve = json['eve'].toDouble();
+    morn = json['morn'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
