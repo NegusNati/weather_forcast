@@ -37,7 +37,7 @@ Widget midview(AsyncSnapshot snapshot){
                   mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("${forecastList[0].temp.day.toStringAsFixed(0)}°C", style: const TextStyle(fontSize: 35, fontWeight: FontWeight.w600) ),
+                    Text("${forecastList[0].temp.max.toStringAsFixed(0)}°C", style: const TextStyle(fontSize: 35, fontWeight: FontWeight.w600) ),
                     
                     const SizedBox(width: 10,),
                     Text("${forecastList[0].weather[0].description.toUpperCase()}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w200) ),
