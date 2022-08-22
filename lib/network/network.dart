@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:toast/toast.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weather_forcast/utill/forcast_utill.dart';
 import 'package:http/http.dart';
 
@@ -17,7 +16,11 @@ class Network {
     var url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=$cityName&cnt=7&appid=${Util.appId}&units=metric";
 
     final Response response = await get(Uri.parse(url));
-    print(Uri.parse(url));
+
+
+
+    print(response.statusCode);
+
 
     // try {
       
@@ -37,10 +40,20 @@ class Network {
       //return the mapped json to our PODO model
       return WeatherForecastModel.fromJson(json.decode(response.body));
     }else if (response.statusCode == 404){
-      // ignore: use_build_context_synchronously
+
+    String res = response.body; 
+    var data = jsonDecode(res); 
     
-      Toast.show("Toast plugin app", duration: Toast.lengthShort, gravity:  Toast.bottom);
-      throw SizedBox(width: 1,);
+     Fluttertoast.showToast(
+        msg: data["message"],
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+    throw '';
     } 
     else {
       print(response.statusCode );

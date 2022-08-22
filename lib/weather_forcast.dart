@@ -39,6 +39,8 @@ class _WeatheForcastState extends State<WeatheForcast> {
               child: FutureBuilder<WeatherForecastModel>(
                   future: forecastObject,
                   builder: ((context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      
                     if (snapshot.hasData) {
                       return Column(
                         children: [
@@ -46,7 +48,13 @@ class _WeatheForcastState extends State<WeatheForcast> {
                           bottomView(snapshot, context)
                         ],
                       );
-                    } else {
+                    }else{
+                      return Container(
+                        
+                        child: Text("${snapshot.error}"),
+                      );
+                    }
+                    }else{
                       return Container(
                         child: const Center(child: CircularProgressIndicator()),
                       );
