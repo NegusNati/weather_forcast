@@ -18,38 +18,49 @@ Widget forcastCard(AsyncSnapshot snapshot, int index) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Center(child: Text(dayOfTheWeek)),
-        const SizedBox(height: 7,),
+        const SizedBox(
+          height: 7,
+        ),
         Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           CircleAvatar(
-            
-           backgroundColor: Colors.white,
+            backgroundColor: Colors.white,
             radius: 33,
             child: getWeatherIcon(
                 weatherDescription: forcastList[index].weather[0].main,
                 color: Colors.pink[300],
                 size: 37),
-
           ),
-          const SizedBox(width: 5,),
+          const SizedBox(
+            width: 5,
+          ),
           Column(
-       
             children: [
               Row(
                 children: [
                   Text("${forcastList[index].temp.min.toStringAsFixed(0)}°C  "),
-                  const Icon(FontAwesomeIcons.solidCircleDown  ,color: Colors.white, size: 10,)
+                  const Icon(
+                    FontAwesomeIcons.solidCircleDown,
+                    color: Colors.white,
+                    size: 10,
+                  )
                 ],
               ),
               Row(
                 children: [
                   Text("${forcastList[index].temp.max.toStringAsFixed(0)}°C  "),
-                   const Icon(FontAwesomeIcons.solidCircleUp  ,color: Colors.white, size: 10,)
+                  const Icon(
+                    FontAwesomeIcons.solidCircleUp,
+                    color: Colors.white,
+                    size: 10,
+                  )
                 ],
               ),
-                 Text("Hum:${forcastList[index].humidity}%",),
-                 Text("Win:${forcastList[index].speed.toStringAsFixed(0)}M/s",)
-                   
-               
+              Text(
+                "Hum:${forcastList[index].humidity}%",
+              ),
+              Text(
+                "Win:${forcastList[index].speed.toStringAsFixed(0)}M/s",
+              )
             ],
           ),
         ]),

@@ -40,21 +40,19 @@ class _WeatheForcastState extends State<WeatheForcast> {
                   future: forecastObject,
                   builder: ((context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
-                      
-                    if (snapshot.hasData) {
-                      return Column(
-                        children: [
-                          midview(snapshot),
-                          bottomView(snapshot, context)
-                        ],
-                      );
-                    }else{
-                      return Container(
-                        
-                        child: Text("${snapshot.error}"),
-                      );
-                    }
-                    }else{
+                      if (snapshot.hasData) {
+                        return Column(
+                          children: [
+                            midview(snapshot),
+                            bottomView(snapshot, context)
+                          ],
+                        );
+                      } else {
+                        return Container(
+                          child: Text("${snapshot.error}"),
+                        );
+                      }
+                    } else {
                       return Container(
                         child: const Center(child: CircularProgressIndicator()),
                       );
@@ -79,8 +77,8 @@ class _WeatheForcastState extends State<WeatheForcast> {
           onSubmitted: (value) {
             setState(() {
               _city = value; // assign the input value to _city
-              forecastObject =
-                  networkForecastMethod(cityName: _city); // to create a new object for the input city
+              forecastObject = networkForecastMethod(
+                  cityName: _city); // to create a new object for the input city
             });
           },
         ),
@@ -88,8 +86,7 @@ class _WeatheForcastState extends State<WeatheForcast> {
     );
   }
 
-  Future<WeatherForecastModel> networkForecastMethod({required String cityName}) =>
+  Future<WeatherForecastModel> networkForecastMethod(
+          {required String cityName}) =>
       Network().getWeatherForcast(cityName: _city);
-      
-        
 }
