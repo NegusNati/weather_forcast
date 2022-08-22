@@ -24,7 +24,7 @@ Widget midview(AsyncSnapshot snapshot){
           const SizedBox(height: 15,),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: getWeatherIcon(weatherDescription: forecastList[0].weather[0].main, color:Colors.pink[300]  , size: 195   ),
+            child: getWeatherIcon(weatherDescription: forecastList[0].weather[0].main, color:Colors.pink[300]  , size: 210  ),
           ),
             // Icon(FontAwesomeIcons.cloud, color: Colors.pink[300]  , size: 190,),
           Padding(

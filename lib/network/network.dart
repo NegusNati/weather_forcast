@@ -14,6 +14,9 @@ class Network{
      final Response response = await get(Uri.parse(url));
      print(Uri.parse(url));
 
+
+    
+
      if(response.statusCode == 200){
       print(json.decode(response.body));
       //return the mapped json to our PODO model  

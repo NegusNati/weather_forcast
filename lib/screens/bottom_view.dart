@@ -10,7 +10,7 @@ return Column(
   children:  [
     Text("7 Days Weather Forcast".toUpperCase(), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black38),),
     Container(
-      height: 220,
+      height: 200,
       padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 10),
 
       child: ListView.separated(
@@ -22,7 +22,7 @@ return Column(
        return ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(10),),
            child: Container(
-            width: MediaQuery.of(context).size.width / 2.9,
+            width: MediaQuery.of(context).size.width / 2.6,
             height: 180,
             decoration:  const BoxDecoration(
               gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors:[Color(0xff9661c3),Colors.white] )
